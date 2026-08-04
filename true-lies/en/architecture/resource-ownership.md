@@ -1,0 +1,81 @@
+# Resource Ownership: A Unified Model That Never Formed
+
+> Category: Architecture (ARC)  
+> Evidence Level: F (directly proven by source code)  
+> Analysis Baseline: `4f843556`
+
+---
+
+## TL;DR
+
+8/13 resource models lack `tenant_id`. Credentials are scattered across 5+ storage locations. Output artifacts use 4 different persistence methods. The system has no unified answer to "who owns what."
+
+---
+
+## 1. Resource Model Audit
+
+Clawith has 13 core resource models. Here is whether each includes `tenant_id`:
+
+| Model | Table | Has tenant_id? |
+|---|---|---|
+| Agent | agents | ✅ |
+| AgentRun | agent_runs | ❌ |
+| AgentRunCommand | agent_run_commands | ❌ |
+| ChannelConfig | channel_configs | ❌ |
+| AgentTool | agent_tools | ❌ |
+| ChatSession | chat_sessions | ❌ |
+| ChatMessage | chat_messages | ❌ |
+| Task | tasks | ❌ |
+| Workspace | workspaces | ❌ |
+| FocusItem | focus_items | ❌ |
+| AgentRelationship | agent_relationships | ❌ |
+| AgentAgentRelationship | agent_agent_relationships | ❌ |
+| OrgMember | org_members | ✅ |
+
+**8/13 models lack `tenant_id`.** This means multi-tenant isolation is not enforced on these tables—Tenant A's Agent's run records and Tenant B's Agent's run records coexist in the same table with no physical isolation and no database-level filtering.
+
+---
+
+## 2. Credential Storage Locations
+
+Sensitive credentials in the system are scattered across at least 5 locations:
+
+| Location | Stored Content |
+|---|---|
+| `agents.api_key_hash` | Gateway API Key (SHA256 hash) |
+| `channel_configs.app_secret` | Feishu/WeCom/WhatsApp App Secret |
+| `channel_configs.encrypt_key` | Feishu/WeCom EncodingAESKey |
+| `channel_configs.verification_token` | Feishu/WeCom Verification Token |
+| `agent_tools.config` (JSON) | Sandbox type/URL/Key, MCP credentials, custom tool config |
+
+`agent_tools.config` is a free-form JSON dictionary—any credential for any tool can be stuffed into it, with no structural constraints.
+
+---
+
+## 3. Output Artifact Persistence
+
+Files and content produced by Agents are persisted through at least 4 paths:
+
+| Path | File Type |
+|---|---|
+| Local filesystem | Agent tools write directly |
+| S3-compatible storage | Sandbox output |
+| `chat_messages` table | Message records |
+| `focus_items` table | Work items |
+
+There is no unified "Agent output" abstraction—each type of output has its own independent storage, permissions, and lifecycle.
+
+---
+
+## 4. Relationship to AI Coding
+
+Every time a new resource model is added, the AI only needs to satisfy the "current task's" requirements—it does not need to consider whether this model should be incorporated into a unified tenant isolation layer, because no one told it "all resource models must share an ownership layer."
+
+This is a typical consequence of AI task-by-task development: each model is locally reasonable, but the whole lacks a consistent security boundary.
+
+---
+
+## 5. Related Findings
+
+- [SEC-001](../security/tool-config-idor.md): The `agent_tools` table lacking `tenant_id` directly enables IDOR
+- [SEC-003](../security/gateway-key-plaintext.md): `api_key_hash` storage and verification logic is inconsistent

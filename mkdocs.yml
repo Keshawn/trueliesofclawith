@@ -1,0 +1,91 @@
+site_name: True Lies of Clawith
+site_description: >-
+  A case study of how contradictory product direction and AI-assisted,
+  task-by-task implementation can interact.
+site_author: Clawith review
+site_url: https://keshawn.github.io/trueliesofclawith/
+repo_url: https://github.com/Keshawn/trueliesofclawith
+repo_name: Keshawn/trueliesofclawith
+edit_uri: edit/main/true-lies/
+
+docs_dir: true-lies
+
+theme:
+  name: material
+  language: en
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.indexes
+    - content.code.copy
+    - toc.follow
+    - search.highlight
+    - search.suggest
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+plugins:
+  - search
+
+nav:
+  - English:
+    - Home: README.md
+    - Concepts:
+      - "Digital Employee, or Personal Assistant?": en/concepts/digital-employee-narrative.md
+    - Architecture:
+      - "Resource Ownership: A Unified Model That Never Formed": en/architecture/resource-ownership.md
+      - "A2A Delegation & Group Chat: Outside the Work Model": en/architecture/a2a-work-model.md
+    - Implementation:
+      - "Path Boundaries: 18 Identical Fragile Checks": en/implementation/path-boundary.md
+      - "Relationship Migration: Unfinished Half-Product": en/implementation/relationship-migration.md
+      - "Gateway API Key: Old and New Logic Coexist": en/implementation/gateway-key-migration.md
+    - Security:
+      - "Tool/Sandbox Config Update Has IDOR": en/security/tool-config-idor.md
+      - "Feishu Event Webhook: Zero Signature Verification": en/security/feishu-webhook.md
+      - "Gateway API Key: Plaintext & Non-Constant-Time": en/security/gateway-key-plaintext.md
+      - "Actor Fallback to Agent Creator (Confused Deputy)": en/security/actor-fallback.md
+  - 中文:
+    - 首页: zh/README.md
+    - 概念:
+      - 数字员工，还是个人助理？: zh/concepts/digital-employee-narrative.md
+    - 架构:
+      - 资源归属：未形成的统一模型: zh/architecture/resource-ownership.md
+      - A2A 委托与群聊：脱离正式工作模型: zh/architecture/a2a-work-model.md
+    - 实现:
+      - 路径边界：18 处同模式脆弱检查: zh/implementation/path-boundary.md
+      - relationship 迁移：未收口的半成品: zh/implementation/relationship-migration.md
+      - Gateway API Key：新旧逻辑并存: zh/implementation/gateway-key-migration.md
+    - 安全:
+      - 工具/沙箱配置更新存在 IDOR: zh/security/tool-config-idor.md
+      - 飞书 Event Webhook 零验签: zh/security/feishu-webhook.md
+      - Gateway API Key 的明文存储与非恒定时间比对: zh/security/gateway-key-plaintext.md
+      - actor 缺失时回退 Agent 创建者身份: zh/security/actor-fallback.md

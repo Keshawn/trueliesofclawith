@@ -1,0 +1,90 @@
+# A2A 委托与群聊：脱离正式工作模型
+
+> 分类：架构（ARC） + 安全（SEC）  
+> 证据等级：F（源码直接证明）  
+> 分析基线：`4f843556`
+
+---
+
+## 一句话
+
+A2A 委托和群聊 handoff 创建 `run_kind="delegated"` 的执行，绕过 Focus 工作项模型和 OKR 系统，且不写入 `AgentActivityLog`，形成不可审计的幽灵工作。
+
+---
+
+## 1. 委托执行的特殊身份
+
+A2A 委托（`backend/app/services/agent_runtime/a2a_runtime.py:664`）和群聊 handoff（`group_handoff.py:759`）创建 run 时，共同使用：
+
+```python
+run_kind="delegated",
+```
+
+这不是普通的 `foreground` run。这是一个特殊标记，意味着"这是别人委托的，不是我的工作"。
+
+---
+
+## 2. 绕过 Focus 工作项模型
+
+Clawith 的 Agent 通过 Focus 工作项（`focus_items` 表）管理自己的任务清单。但委托执行不创建 `AgentFocusItem`，不接触 OKR 表。
+
+Agent 完成委托任务后，在自己的 Focus 视图中看不到任何记录——它"做了一件事，但不知道自己做了一件事"。
+
+---
+
+## 3. 系统提示词回避追踪
+
+`a2a_runtime.py:704,711-713`：
+
+```python
+prefix = "Complete this delegated task and return a usable result"
+# ...
+"The verified final answer is returned to the source Run automatically."
+```
+
+Agent 被指示"完成并返回结果"，而不是"记录为工作项"。这是故意的——但代价是委托任务在 Agent 的工作历史中不可见。
+
+---
+
+## 4. 审计日志缺失
+
+`AgentActivityLog` 的 `action_type` 枚举（`activity_log.py:28-31`）包含：
+
+```python
+"chat_reply", "tool_call", "feishu_msg_sent", "agent_msg_sent",
+"web_msg_sent", "task_created", "task_updated", "file_written",
+"error", "schedule_run", "heartbeat", "plaza_post"
+```
+
+**没有 `task_delegate`、`a2a_delegate`、`group_handoff`。**
+
+`a2a_runtime.py` 和 `group_handoff.py` 均不调用 `log_activity()`。
+
+---
+
+## 5. 工作模型分裂
+
+| 入口 | run_kind | 创建 Focus？ | 写入 ActivityLog？ | 可审计？ |
+|---|---|---|---|---|
+| 人类对话 | `foreground` | ✅ | ✅ | ✅ |
+| A2A 委托 | `delegated` | ❌ | ❌ | ❌ |
+| 群聊 handoff | `delegated` | ❌ | ❌ | ❌ |
+| 定时任务 | `background` | ❌ | ✅ (schedule_run) | 部分 |
+
+---
+
+## 6. 系统性后果
+
+1. **Agent 无法汇报工作**：被委托的 Agent 完成了任务，但查看自己的 Focus 时看不到记录
+2. **管理者无法审计**：无法回答"Agent X 昨天被委托了多少次？完成了什么？"
+3. **绩效追踪不可行**：如果数字员工需要考核，委托任务完全不可见
+4. **幽灵工作积压**：委托执行的结果只在调用方的 Run 上下文中可见，后续无法检索
+
+---
+
+## 7. 与 AI Coding 的关系
+
+这是典型的"每个入口独立开发"模式：
+- 人类对话入口被完整实现（Focus + ActivityLog + 消息记录）
+- A2A 和群聊入口被简化为 RPC 调用——"把结果返回就行"
+- 三个入口对"什么是工作"没有共享模型——暗示由不同 prompt/任务生成，无人做全局一致性审查
