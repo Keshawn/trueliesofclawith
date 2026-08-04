@@ -99,6 +99,12 @@ All findings have been source-verified (evidence level F, analysis baseline `4f8
 
 ---
 
+## Part III · Conclusion
+
+(TBD)
+
+---
+
 ## What will follow
 
 More findings will be published as they are verified. Security findings (SEC-*) will not be disclosed in detail before upstream fixes are confirmed. The English version will be translated in sync after the Chinese structure and arguments stabilize.
