@@ -2,7 +2,7 @@
 
 A case study of how contradictory product direction and AI-assisted, task-by-task implementation can interact.
 
-**Languages:** **English** · [中文](zh/README.md)
+> **📖 Read the full findings at [keshawn.github.io/trueliesofclawith](https://keshawn.github.io/trueliesofclawith/)** · [中文版](https://keshawn.github.io/trueliesofclawith/zh/)
 
 ---
 
@@ -10,37 +10,11 @@ A case study of how contradictory product direction and AI-assisted, task-by-tas
 
 This site publishes the findings of an independent analysis of the [Clawith](https://github.com/dataelement/Clawith) agent platform (analysis baseline: commit `4f843556`). The analysis examines the gap between the project's public claims and its source-code reality, and the role AI Coding played in creating, amplifying, or obscuring that gap.
 
+All findings are published as a bilingual MkDocs site deployed via GitHub Pages. The full index of findings is maintained on the site itself — see the link above.
+
 ## About the Authorship
 
 **This document was written and analyzed primarily with the assistance of large language models (LLMs).** Evidence collection, code search, pattern recognition, causal inference, and article drafting were all performed by LLMs assisting a human researcher. The human researcher is responsible for research direction, disclosure decisions, and final conclusions.
-
----
-
-## Findings
-
-All 10 findings below have been source-verified (evidence level F).
-
-### Concepts
-
-- [Digital Employee, or Personal Assistant?](en/concepts/digital-employee-narrative.md)
-
-### Architecture
-
-- [Resource Ownership: A Unified Model That Never Formed](en/architecture/resource-ownership.md)
-- [A2A Delegation & Group Chat: Outside the Work Model](en/architecture/a2a-work-model.md)
-
-### Implementation
-
-- [Path Boundaries: 18 Identical Fragile Checks](en/implementation/path-boundary.md)
-- [Relationship Migration: Unfinished Half-Product](en/implementation/relationship-migration.md)
-- [Gateway API Key: Old and New Logic Coexist](en/implementation/gateway-key-migration.md)
-
-### Security
-
-- [Tool/Sandbox Config Update Has IDOR](en/security/tool-config-idor.md)
-- [Feishu Event Webhook: Zero Signature Verification](en/security/feishu-webhook.md)
-- [Gateway API Key: Plaintext & Non-Constant-Time](en/security/gateway-key-plaintext.md)
-- [Actor Fallback to Agent Creator (Confused Deputy)](en/security/actor-fallback.md)
 
 ---
 
