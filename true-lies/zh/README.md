@@ -95,34 +95,7 @@ Clawith 具有真实项目所需的复杂度和一定公开关注度，并同时
 
 ## 第二部分 · 分析结果
 
-以下 15 篇发现已通过源码核实（证据等级 F，分析基线 `4f843556`）：
-
-### 概念
-
-- [数字员工，还是个人助理？](concepts/digital-employee-narrative.md)
-- [可见 ≠ 可管理：被混淆的"可见"语义](concepts/visibility-is-not-authority.md)
-- [能通信 = 能委派：A2A 通信与任务委派权未分离](concepts/communication-vs-delegation.md)
-- [custom 模式形同虚设：可见性控制的幻觉](concepts/custom-mode-illusion.md)
-- [既瞎又聋的私有 Agent：private 模式的隔离悖论](concepts/private-blindness.md)
-- [没有任何权限控制的系统：company 模式下的全公司同权](concepts/org-model-flat.md)
-
-### 架构
-
-- [资源归属：未形成的统一模型](architecture/resource-ownership.md)
-- [A2A 委托与群聊：脱离正式工作模型](architecture/a2a-work-model.md)
-
-### 实现
-
-- [路径边界：18 处同模式脆弱检查](implementation/path-boundary.md)
-- [relationship 迁移：未收口的半成品](implementation/relationship-migration.md)
-- [Gateway API Key：新旧逻辑并存](implementation/gateway-key-migration.md)
-
-### 安全
-
-- [工具/沙箱配置更新存在 IDOR](security/tool-config-idor.md)
-- [飞书 Event Webhook 零验签](security/feishu-webhook.md)
-- [Gateway API Key 的明文存储与非恒定时间比对](security/gateway-key-plaintext.md)
-- [actor 缺失时回退 Agent 创建者身份](security/actor-fallback.md)
+所有发现已通过源码核实（证据等级 F，分析基线 `4f843556`）。请使用网站导航按类别浏览。
 
 ---
 

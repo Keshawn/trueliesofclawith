@@ -127,15 +127,4 @@ All 14 findings below have been source-verified (evidence level F, analysis base
 
 ## What will follow
 
-The revised case study is expected to cover:
-
-1. why Clawith is a useful sample;
-2. product and domain-model contradictions;
-3. identity, permissions, and organizational governance;
-4. collaboration, state, and lifecycle behavior;
-5. resources, files, and credentials;
-6. implementation and code-quality patterns;
-7. security consequences; and
-8. the specific role AI Coding played—or did not play—in each class of problem.
-
-No publication date is being promised. Pages will be restored when their structure and evidence are ready.
+More findings will be published as they are verified. Security findings (SEC-*) will not be disclosed in detail before upstream fixes are confirmed. The English version will be translated in sync after the Chinese structure and arguments stabilize.
