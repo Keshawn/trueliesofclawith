@@ -95,33 +95,7 @@ During the revision:
 
 ## Part II · Findings
 
-All 14 findings below have been source-verified (evidence level F, analysis baseline `4f843556`). Also available in [中文](zh/README.md).
-
-### Concepts
-
-- [Digital Employee, or Personal Assistant?](en/concepts/digital-employee-narrative.md)
-- [Visibility ≠ Authority: The Conflated Semantics of "Visible"](en/concepts/visibility-is-not-authority.md)
-- [Communication = Delegation: No Separation of Contact and Task Authority](en/concepts/communication-vs-delegation.md)
-- [The "Custom" Mode Illusion: Visibility Control That Doesn't Exist](en/concepts/custom-mode-illusion.md)
-- [Blind and Deaf: The "Private" Mode Isolation Paradox](en/concepts/private-blindness.md)
-
-### Architecture
-
-- [Resource Ownership: A Unified Model That Never Formed](en/architecture/resource-ownership.md)
-- [A2A Delegation & Group Chat: Outside the Work Model](en/architecture/a2a-work-model.md)
-
-### Implementation
-
-- [Path Boundaries: 18 Identical Fragile Checks](en/implementation/path-boundary.md)
-- [Relationship Migration: Unfinished Half-Product](en/implementation/relationship-migration.md)
-- [Gateway API Key: Old and New Logic Coexist](en/implementation/gateway-key-migration.md)
-
-### Security
-
-- [Tool/Sandbox Config Update Has IDOR](en/security/tool-config-idor.md)
-- [Feishu Event Webhook: Zero Signature Verification](en/security/feishu-webhook.md)
-- [Gateway API Key: Plaintext & Non-Constant-Time](en/security/gateway-key-plaintext.md)
-- [Actor Fallback to Agent Creator (Confused Deputy)](en/security/actor-fallback.md)
+All findings have been source-verified (evidence level F, analysis baseline `4f843556`). Please use the site navigation to browse by category. Also available in [中文](zh/README.md).
 
 ---
 
