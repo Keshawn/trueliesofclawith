@@ -61,6 +61,9 @@ nav:
     - Home: README.md
     - Concepts:
       - "Digital Employee, or Personal Assistant?": en/concepts/digital-employee-narrative.md
+      - "Visibility ≠ Authority: The Conflated Semantics of 'Visible'": en/concepts/visibility-is-not-authority.md
+      - "Communication = Delegation: No Separation of Contact and Task Authority": en/concepts/communication-vs-delegation.md
+      - "The 'Custom' Mode Illusion: Visibility Control That Doesn't Exist": en/concepts/custom-mode-illusion.md
     - Architecture:
       - "Resource Ownership: A Unified Model That Never Formed": en/architecture/resource-ownership.md
       - "A2A Delegation & Group Chat: Outside the Work Model": en/architecture/a2a-work-model.md
@@ -77,6 +80,9 @@ nav:
     - 首页: zh/README.md
     - 概念:
       - 数字员工，还是个人助理？: zh/concepts/digital-employee-narrative.md
+      - 可见 ≠ 可管理：被混淆的"可见"语义: zh/concepts/visibility-is-not-authority.md
+      - 能通信 = 能委派：A2A 通信与任务委派权未分离: zh/concepts/communication-vs-delegation.md
+      - custom 模式形同虚设：可见性控制的幻觉: zh/concepts/custom-mode-illusion.md
     - 架构:
       - 资源归属：未形成的统一模型: zh/architecture/resource-ownership.md
       - A2A 委托与群聊：脱离正式工作模型: zh/architecture/a2a-work-model.md

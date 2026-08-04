@@ -95,11 +95,13 @@ During the revision:
 
 ## Part II · Findings
 
-All 10 findings below have been source-verified (evidence level F, analysis baseline `4f843556`). Also available in [中文](zh/README.md).
+All 12 findings below have been source-verified (evidence level F, analysis baseline `4f843556`). Also available in [中文](zh/README.md).
 
 ### Concepts
 
 - [Digital Employee, or Personal Assistant?](en/concepts/digital-employee-narrative.md)
+- [Visibility ≠ Authority: The Conflated Semantics of "Visible"](en/concepts/visibility-is-not-authority.md)
+- [Communication = Delegation: No Separation of Contact and Task Authority](en/concepts/communication-vs-delegation.md)
 
 ### Architecture
 
