@@ -95,7 +95,7 @@ Clawith 具有真实项目所需的复杂度和一定公开关注度，并同时
 
 ## 第二部分 · 分析结果
 
-以下 14 篇发现已通过源码核实（证据等级 F，分析基线 `4f843556`）：
+以下 15 篇发现已通过源码核实（证据等级 F，分析基线 `4f843556`）：
 
 ### 概念
 
@@ -104,6 +104,7 @@ Clawith 具有真实项目所需的复杂度和一定公开关注度，并同时
 - [能通信 = 能委派：A2A 通信与任务委派权未分离](concepts/communication-vs-delegation.md)
 - [custom 模式形同虚设：可见性控制的幻觉](concepts/custom-mode-illusion.md)
 - [既瞎又聋的私有 Agent：private 模式的隔离悖论](concepts/private-blindness.md)
+- [没有任何权限控制的系统：company 模式下的全公司同权](concepts/org-model-flat.md)
 
 ### 架构
 

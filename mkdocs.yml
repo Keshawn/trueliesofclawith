@@ -65,6 +65,7 @@ nav:
       - "Communication = Delegation: No Separation of Contact and Task Authority": en/concepts/communication-vs-delegation.md
       - "The 'Custom' Mode Illusion: Visibility Control That Doesn't Exist": en/concepts/custom-mode-illusion.md
       - "Blind and Deaf: The 'Private' Mode Isolation Paradox": en/concepts/private-blindness.md
+      - "A System Without Access Control: Everyone Is Equal in Company Mode": en/concepts/org-model-flat.md
     - Architecture:
       - "Resource Ownership: A Unified Model That Never Formed": en/architecture/resource-ownership.md
       - "A2A Delegation & Group Chat: Outside the Work Model": en/architecture/a2a-work-model.md
@@ -85,6 +86,7 @@ nav:
       - 能通信 = 能委派：A2A 通信与任务委派权未分离: zh/concepts/communication-vs-delegation.md
       - custom 模式形同虚设：可见性控制的幻觉: zh/concepts/custom-mode-illusion.md
       - 既瞎又聋的私有 Agent：private 模式的隔离悖论: zh/concepts/private-blindness.md
+      - 没有任何权限控制的系统：company 模式下的全公司同权: zh/concepts/org-model-flat.md
     - 架构:
       - 资源归属：未形成的统一模型: zh/architecture/resource-ownership.md
       - A2A 委托与群聊：脱离正式工作模型: zh/architecture/a2a-work-model.md
