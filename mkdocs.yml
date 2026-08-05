@@ -57,6 +57,10 @@ markdown_extensions:
 plugins:
   - search
 
+exclude_docs: |
+  _snippets/
+  zh/_snippets/
+
 nav:
   - English:
     - Home: README.md
