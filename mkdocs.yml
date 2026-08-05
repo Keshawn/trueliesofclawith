@@ -49,6 +49,7 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.inlinehilite
   - pymdownx.details
+  - pymdownx.snippets
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
@@ -59,47 +60,63 @@ plugins:
 nav:
   - English:
     - Home: README.md
-    - Concepts:
-      - "Digital Employee, or Personal Assistant?": en/concepts/digital-employee-narrative.md
-      - "Visibility ≠ Authority: The Conflated Semantics of 'Visible'": en/concepts/visibility-is-not-authority.md
-      - "Communication = Delegation: No Separation of Contact and Task Authority": en/concepts/communication-vs-delegation.md
-      - "The 'Custom' Mode Illusion: Visibility Control That Doesn't Exist": en/concepts/custom-mode-illusion.md
-      - "Blind and Deaf: The 'Private' Mode Isolation Paradox": en/concepts/private-blindness.md
-      - "A System Without Access Control: Everyone Is Equal in Company Mode": en/concepts/org-model-flat.md
-      - "Worse Than Doing Nothing: The Dashboard's Fake 'Online' Status": en/concepts/fake-online-status.md
-      - "'All' Is Not All: Systemic Inconsistency of Totality Claims": en/concepts/all-is-not-all.md
-    - Architecture:
-      - "Resource Ownership: A Unified Model That Never Formed": en/architecture/resource-ownership.md
-      - "A2A Delegation & Group Chat: Outside the Work Model": en/architecture/a2a-work-model.md
-    - Implementation:
-      - "Path Boundaries: 18 Identical Fragile Checks": en/implementation/path-boundary.md
-      - "Relationship Migration: Unfinished Half-Product": en/implementation/relationship-migration.md
-      - "Gateway API Key: Old and New Logic Coexist": en/implementation/gateway-key-migration.md
-    - Security:
-      - "Tool/Sandbox Config Update Has IDOR": en/security/tool-config-idor.md
-      - "Feishu Event Webhook: Zero Signature Verification": en/security/feishu-webhook.md
-      - "Gateway API Key: Plaintext & Non-Constant-Time": en/security/gateway-key-plaintext.md
-      - "Actor Fallback to Agent Creator (Confused Deputy)": en/security/actor-fallback.md
+    - 1 · Cognitive Pipeline:
+      - "Fake Caching and the Heartbeat Tax": topics/020.md
+      - "One Pipe: Every Tool Output Is a Conversation": topics/018.md
+      - "A Dumpster You Throw Everything Into": topics/019.md
+      - "When Everything Is a File Becomes Everything Is a Disaster": topics/021.md
+      - "The Zero Processing Philosophy": topics/022.md
+    - 2 · Sandbox Boundaries:
+      - "Path Boundaries: 18 Identical Fragile Checks": topics/001.md
+      - "Tool/Sandbox Config Update Has IDOR": topics/002.md
+    - 3 · External Communication:
+      - "Feishu Event Webhook: Zero Signature Verification": topics/003.md
+    - 4 · Lifecycle & Visibility:
+      - "Worse Than Doing Nothing: The Dashboard's Fake Online Status": topics/005.md
+      - "'All' Is Not All: Systemic Inconsistency of Totality Claims": topics/006.md
+    - 5 · Credential Governance:
+      - "Gateway API Key: Plaintext & Non-Constant-Time": topics/009.md
+      - "Gateway API Key: Old and New Logic Coexist": topics/010.md
+    - 6 · Organizational Topology:
+      - "Digital Employee, or Personal Assistant?": topics/011.md
+      - "Visibility ≠ Authority": topics/012.md
+      - "Communication = Delegation": topics/013.md
+      - "A System Without Access Control": topics/014.md
+      - "Blind and Deaf: The Private Mode Isolation Paradox": topics/015.md
+      - "The Custom Mode Illusion": topics/016.md
+      - "Actor Fallback to Agent Creator (Confused Deputy)": topics/004.md
+      - "Resource Ownership: A Unified Model That Never Formed": topics/007.md
+      - "A2A Delegation & Group Chat: Outside the Work Model": topics/008.md
+    - Zombie Features:
+      - "Relationship Migration: An Unfinished Half-Product": topics/017.md
   - 中文:
     - 首页: zh/README.md
-    - 概念:
-      - 数字员工，还是个人助理？: zh/concepts/digital-employee-narrative.md
-      - 可见 ≠ 可管理：被混淆的"可见"语义: zh/concepts/visibility-is-not-authority.md
-      - 能通信 = 能委派：A2A 通信与任务委派权未分离: zh/concepts/communication-vs-delegation.md
-      - custom 模式形同虚设：可见性控制的幻觉: zh/concepts/custom-mode-illusion.md
-      - 既瞎又聋的私有 Agent：private 模式的隔离悖论: zh/concepts/private-blindness.md
-      - 没有任何权限控制的系统：company 模式下的全公司同权: zh/concepts/org-model-flat.md
-      - 比不做更坏：Dashboard 的虚假在线: zh/concepts/fake-online-status.md
-      - 全部 ≠ 全部：系统性的"全量"语义不一致: zh/concepts/all-is-not-all.md
-    - 架构:
-      - 资源归属：未形成的统一模型: zh/architecture/resource-ownership.md
-      - A2A 委托与群聊：脱离正式工作模型: zh/architecture/a2a-work-model.md
-    - 实现:
-      - 路径边界：18 处同模式脆弱检查: zh/implementation/path-boundary.md
-      - relationship 迁移：未收口的半成品: zh/implementation/relationship-migration.md
-      - Gateway API Key：新旧逻辑并存: zh/implementation/gateway-key-migration.md
-    - 安全:
-      - 工具/沙箱配置更新存在 IDOR: zh/security/tool-config-idor.md
-      - 飞书 Event Webhook 零验签: zh/security/feishu-webhook.md
-      - Gateway API Key 的明文存储与非恒定时间比对: zh/security/gateway-key-plaintext.md
-      - actor 缺失时回退 Agent 创建者身份: zh/security/actor-fallback.md
+    - 1 · 认知管道:
+      - "伪缓存与心跳税：如何烧掉你的钱": zh/topics/020.md
+      - "一根管道：所有工具输出都是对话": zh/topics/018.md
+      - "一个什么都往里扔的垃圾桶": zh/topics/019.md
+      - "当一切皆文件变成一切皆灾难": zh/topics/021.md
+      - "零加工哲学：一句设计原则如何毁掉整个运行时": zh/topics/022.md
+    - 2 · 沙箱边界:
+      - "路径边界：18 处同模式脆弱检查": zh/topics/001.md
+      - "工具/沙箱配置更新存在 IDOR": zh/topics/002.md
+    - 3 · 外部通信:
+      - "飞书 Event Webhook 零验签": zh/topics/003.md
+    - 4 · 生命周期与可见性:
+      - "比不做更坏：Dashboard 的虚假在线": zh/topics/005.md
+      - "全部 ≠ 全部：系统性的全量语义不一致": zh/topics/006.md
+    - 5 · 凭证治理:
+      - "Gateway API Key 的明文存储与非恒定时间比对": zh/topics/009.md
+      - "Gateway API Key：新旧逻辑并存": zh/topics/010.md
+    - 6 · 组织拓扑:
+      - "数字员工，还是个人助理？": zh/topics/011.md
+      - "可见 ≠ 可管理：被混淆的可见语义": zh/topics/012.md
+      - "能通信 = 能委派：A2A 通信与任务委派权未分离": zh/topics/013.md
+      - "没有任何权限控制的系统：company 模式下的全公司同权": zh/topics/014.md
+      - "既瞎又聋的私有 Agent：private 模式的隔离悖论": zh/topics/015.md
+      - "custom 模式形同虚设：可见性控制的幻觉": zh/topics/016.md
+      - "actor 缺失时回退 Agent 创建者身份": zh/topics/004.md
+      - "资源归属：未形成的统一模型": zh/topics/007.md
+      - "A2A 委托与群聊：脱离正式工作模型": zh/topics/008.md
+    - 僵尸功能:
+      - "relationship 迁移：未收口的半成品": zh/topics/017.md
