@@ -596,6 +596,28 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#not-a-ping-ponga-full-dress-rehearsal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Not a Ping-Pong—A Full Dress Rehearsal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-a-real-heartbeat-should-look-like" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What a Real Heartbeat Should Look Like
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#cost-estimate" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -619,6 +641,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="3. Compounding Effects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#heartbeat-vs-dashboard-two-disasters-perfectly-misaligned" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Heartbeat vs Dashboard: Two Disasters, Perfectly Misaligned
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2951,6 +2990,28 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#not-a-ping-ponga-full-dress-rehearsal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Not a Ping-Pong—A Full Dress Rehearsal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-a-real-heartbeat-should-look-like" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What a Real Heartbeat Should Look Like
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#cost-estimate" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2974,6 +3035,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="3. Compounding Effects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#heartbeat-vs-dashboard-two-disasters-perfectly-misaligned" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Heartbeat vs Dashboard: Two Disasters, Perfectly Misaligned
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3075,17 +3153,48 @@ Analysis Baseline: <code>4f843556</code></p>
 <li>No lock, semaphore, rate limiting, jitter, or backpressure</li>
 <li>Fixed 4-hour interval</li>
 </ul>
+<h3 id="not-a-ping-ponga-full-dress-rehearsal">Not a Ping-Pong—A Full Dress Rehearsal<a class="headerlink" href="#not-a-ping-ponga-full-dress-rehearsal" title="Permanent link">&para;</a></h3>
+<p>A heartbeat is supposed to be "are you alive?"—a lightweight health check. Here's what actually happens:</p>
+<ol>
+<li><strong>Assembles the full context</strong>: soul.md + memory.md + skills/ + tools + enterprise_info + focus + triggers → all concatenated into a single system message, sent to the LLM</li>
+<li><strong>The LLM responds in earnest</strong>: the model receives ~20K tokens of full context and generates a thoughtful response</li>
+<li><strong>The response is thrown away</strong>: nobody reads it, nothing is done with it</li>
+</ol>
+<p>This is not a heartbeat. This is making the LLM read the Agent's entire "personality + memory + capabilities" every 4 hours, write a book report, and then toss it in the trash.</p>
+<h3 id="what-a-real-heartbeat-should-look-like">What a Real Heartbeat Should Look Like<a class="headerlink" href="#what-a-real-heartbeat-should-look-like" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>A proper heartbeat:
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>  echo pang → &quot;pang&quot;
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>  2 tokens
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>The actual heartbeat:
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>  → assemble soul + memory + skills + tools + enterprise_info + focus + triggers
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>  → send to LLM
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>  ← LLM generates a thoughtful response
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>  → response is thrown away
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>  ~20,000 tokens
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>From 2 to 20,000—a 10,000× minimum. This isn&#39;t poor optimization. It&#39;s never having asked whether a heartbeat should touch the LLM at all.
+</code></pre></div>
 <h3 id="cost-estimate">Cost Estimate<a class="headerlink" href="#cost-estimate" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>1 Agent × 6/day × 11K tokens = 66K tokens/day
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>100 Agents × 6/day × 11K tokens = 6.6M tokens/day
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>Heartbeat only. Excludes actual user usage.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>1 Agent × 6/day × ~20K tokens = ~120K tokens/day
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>100 Agents × 6/day × ~20K tokens = ~12M tokens/day
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>Heartbeat only. Excludes actual user usage.
 </code></pre></div>
 <hr />
 <h2 id="3-compounding-effects">3. Compounding Effects<a class="headerlink" href="#3-compounding-effects" title="Permanent link">&para;</a></h2>
-<p><strong>Fake caching + heartbeat</strong>: every 4 hours, every Agent retransmits ~11K tokens of fixed overhead—exactly what caching should have prevented.</p>
+<p><strong>Fake caching + heartbeat</strong>: every 4 hours, every Agent retransmits ~20K tokens of full context—exactly what caching should have prevented.</p>
 <p><strong>Heartbeat + no concurrency control</strong>: all Agents restart simultaneously → all heartbeats fire simultaneously → API self-DDoS.</p>
 <p><strong>Heartbeat + no jitter</strong>: fixed interval, all Agents expire at the same time.</p>
+<h3 id="heartbeat-vs-dashboard-two-disasters-perfectly-misaligned">Heartbeat vs Dashboard: Two Disasters, Perfectly Misaligned<a class="headerlink" href="#heartbeat-vs-dashboard-two-disasters-perfectly-misaligned" title="Permanent link">&para;</a></h3>
+<p>The heartbeat burns 20K tokens every 4 hours, but <strong>never updates <code>agent.status</code></strong>.</p>
+<p>Meanwhile, the Dashboard auto-refreshes every 15 seconds—43,600 HTTP requests per day. But the database field it reads is one the heartbeat never writes to.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Heartbeat:  6×/day × 20K tokens = 120K tokens/day → never updates status
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>Dashboard:  2,880 refreshes/day × 42 requests/refresh = 43,600 requests/day → reads data the heartbeat never wrote
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>One burns money producing nothing. The other refreshes furiously seeing nothing.
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>Both working hard, in completely wrong directions.
+</code></pre></div>
 <hr />
 <h2 id="4-relationship-to-ai-coding">4. Relationship to AI Coding<a class="headerlink" href="#4-relationship-to-ai-coding" title="Permanent link">&para;</a></h2>
 <ol>

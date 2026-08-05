@@ -1778,7 +1778,29 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#ping-pong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        你以为的 ping-pong，实际是负重奔跑
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        对比：一个正确的心跳应该是什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         成本估算
@@ -1802,6 +1824,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="3. 叠加效应">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vs-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        心跳 vs Dashboard：两个灾难，完美错位
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1816,7 +1855,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         关键代码
@@ -2951,7 +2990,29 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#ping-pong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        你以为的 ping-pong，实际是负重奔跑
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        对比：一个正确的心跳应该是什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         成本估算
@@ -2975,6 +3036,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="3. 叠加效应">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vs-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        心跳 vs Dashboard：两个灾难，完美错位
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2989,7 +3067,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         关键代码
@@ -3075,17 +3153,48 @@
 <li>无 lock、semaphore、rate limiting、jitter、backpressure</li>
 <li>固定 4 小时间隔</li>
 </ul>
-<h3 id="_5">成本估算<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>1 Agent × 6 次/天 × 11K tokens/次 = 66K tokens/天
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>100 Agent × 6 次/天 × 11K tokens/次 = 6.6M tokens/天
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>仅心跳，不含用户实际使用。
+<h3 id="ping-pong">你以为的 ping-pong，实际是负重奔跑<a class="headerlink" href="#ping-pong" title="Permanent link">&para;</a></h3>
+<p>心跳的本意是"你还活着吗"——一次轻量存活检查。但这里的实现是：</p>
+<ol>
+<li><strong>组装完整上下文</strong>：soul.md + memory.md + skills/ + tools + enterprise_info + focus + triggers → 全部拼进一个 system message，然后发给 LLM</li>
+<li><strong>LLM 认真回复</strong>：模型收到 ~20K tokens 的完整上下文，生成一段有意义的回复</li>
+<li><strong>回复被丢弃</strong>：没有人读取这个回复，不做任何处理</li>
+</ol>
+<p>这不是心跳——这是每 4 小时让 LLM 把整个 Agent 的"人格 + 记忆 + 能力"读一遍，然后写一段读后感，再扔掉。</p>
+<h3 id="_5">对比：一个正确的心跳应该是什么<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>正确的心跳：
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>  echo pang → &quot;pang&quot;
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>  2 tokens
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>实际的心跳：
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>  → 组装 soul + memory + skills + tools + enterprise_info + focus + triggers
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>  → 发给 LLM
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>  ← LLM 生成一段认真的回复
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>  → 回复被丢弃
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>  ~20,000 tokens
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>从 2 到 20,000——一万倍起步。不是优化不够，是根本没意识到心跳不应该进 LLM。
+</code></pre></div>
+<h3 id="_6">成本估算<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>1 Agent × 6 次/天 × ~20K tokens/次 = ~120K tokens/天
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>100 Agent × 6 次/天 × ~20K tokens/次 = ~12M tokens/天
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>仅心跳，不含用户实际使用。
 </code></pre></div>
 <hr />
 <h2 id="3">3. 叠加效应<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
-<p><strong>伪缓存 + 心跳</strong>：每 4 小时，每个 Agent 重传 ~11K tokens 的固定开销——这正是缓存本应避免的。</p>
+<p><strong>伪缓存 + 心跳</strong>：每 4 小时，每个 Agent 重传 ~20K tokens 的完整上下文——这正是缓存本应避免的。</p>
 <p><strong>心跳 + 无并发控制</strong>：所有 Agent 同时重启 → 所有心跳同时触发 → API 被 DDoS。</p>
 <p><strong>心跳 + 无 jitter</strong>：心跳间隔固定，全部 Agent 同时到期。</p>
+<h3 id="vs-dashboard">心跳 vs Dashboard：两个灾难，完美错位<a class="headerlink" href="#vs-dashboard" title="Permanent link">&para;</a></h3>
+<p>心跳每 4 小时烧 20K tokens，但<strong>从不更新 <code>agent.status</code></strong>。</p>
+<p>Dashboard 这边呢？每 15 秒自动刷新一次，一天 43,600 次 HTTP 请求。但它读的数据库字段，心跳从来没写过。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>心跳：6 次/天 × 20K tokens = 120K tokens/天 → 不更新 status
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>Dashboard：2,880 次刷新/天 × 42 请求/次 = 43,600 请求/天 → 读到的是心跳从未更新过的数据
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>一个烧钱不产出，一个刷屏看不到真相。
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>两个都在拼命工作，方向完全错开。
+</code></pre></div>
 <hr />
 <h2 id="4-ai-coding">4. 与 AI Coding 的关系<a class="headerlink" href="#4-ai-coding" title="Permanent link">&para;</a></h2>
 <ol>
@@ -3094,7 +3203,7 @@
 <li><strong>AI 不会主动优化成本</strong>：心跳、缓存、并发——这些是跨任务的系统属性，AI 在每个任务里只看到局部需求</li>
 </ol>
 <hr />
-<h2 id="_6">关键代码<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h2 id="_7">关键代码<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
