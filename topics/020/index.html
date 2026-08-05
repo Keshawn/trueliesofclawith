@@ -628,6 +628,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#what-this-costs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What This Costs
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3022,6 +3033,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#what-this-costs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What This Costs
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3181,6 +3203,16 @@ Analysis Baseline: <code>4f843556</code></p>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>Heartbeat only. Excludes actual user usage.
 </code></pre></div>
+<h3 id="what-this-costs">What This Costs<a class="headerlink" href="#what-this-costs" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Input:  12M tokens/day × $2.50/1M (GPT-4o)  = $30/day
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>Output: ~0.2M tokens/day × $10/1M            = $2/day
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>──────────────────────────────────────────────
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>Total:  ~$32/day ≈ $960/month
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>Claude 3.5 Sonnet: ~$39/day ≈ $1,170/month
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>GPT-4o-mini:       ~$2/day  ≈ $60/month
+</code></pre></div>
+<p>100 agents, doing nothing useful, burning nearly a thousand dollars a month just on heartbeats.</p>
 <hr />
 <h2 id="3-compounding-effects">3. Compounding Effects<a class="headerlink" href="#3-compounding-effects" title="Permanent link">&para;</a></h2>
 <p><strong>Fake caching + heartbeat</strong>: every 4 hours, every Agent retransmits ~20K tokens of full context—exactly what caching should have prevented.</p>
@@ -3189,11 +3221,11 @@ Analysis Baseline: <code>4f843556</code></p>
 <h3 id="heartbeat-vs-dashboard-two-disasters-perfectly-misaligned">Heartbeat vs Dashboard: Two Disasters, Perfectly Misaligned<a class="headerlink" href="#heartbeat-vs-dashboard-two-disasters-perfectly-misaligned" title="Permanent link">&para;</a></h3>
 <p>The heartbeat burns 20K tokens every 4 hours, but <strong>never updates <code>agent.status</code></strong>.</p>
 <p>Meanwhile, the Dashboard auto-refreshes every 15 seconds—43,600 HTTP requests per day. But the database field it reads is one the heartbeat never writes to.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Heartbeat:  6×/day × 20K tokens = 120K tokens/day → never updates status
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>Dashboard:  2,880 refreshes/day × 42 requests/refresh = 43,600 requests/day → reads data the heartbeat never wrote
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>One burns money producing nothing. The other refreshes furiously seeing nothing.
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>Both working hard, in completely wrong directions.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Heartbeat:  6×/day × 20K tokens = 120K tokens/day → never updates status
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Dashboard:  2,880 refreshes/day × 42 requests/refresh = 43,600 requests/day → reads data the heartbeat never wrote
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>One burns money producing nothing. The other refreshes furiously seeing nothing.
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>Both working hard, in completely wrong directions.
 </code></pre></div>
 <hr />
 <h2 id="4-relationship-to-ai-coding">4. Relationship to AI Coding<a class="headerlink" href="#4-relationship-to-ai-coding" title="Permanent link">&para;</a></h2>

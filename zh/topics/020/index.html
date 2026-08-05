@@ -1810,6 +1810,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        换算成钱
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1855,7 +1866,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
         关键代码
@@ -3022,6 +3033,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        换算成钱
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3067,7 +3089,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
         关键代码
@@ -3181,6 +3203,16 @@
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>仅心跳，不含用户实际使用。
 </code></pre></div>
+<h3 id="_7">换算成钱<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>输入：12M tokens/天 × $2.50/1M（GPT-4o）  = $30/天
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>输出：~0.2M tokens/天 × $10/1M            = $2/天
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>────────────────────────────────────────────
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>合计：~$32/天 ≈ $960/月 ≈ ¥7,000/月
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>用 Claude 3.5 Sonnet：~$39/天 ≈ $1,170/月 ≈ ¥8,500/月
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>用 GPT-4o-mini：    ~$2/天  ≈ $60/月    ≈ ¥430/月
+</code></pre></div>
+<p>100 个 Agent，什么正事都不干，光心跳烧掉一个月近千美元。</p>
 <hr />
 <h2 id="3">3. 叠加效应<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <p><strong>伪缓存 + 心跳</strong>：每 4 小时，每个 Agent 重传 ~20K tokens 的完整上下文——这正是缓存本应避免的。</p>
@@ -3189,11 +3221,11 @@
 <h3 id="vs-dashboard">心跳 vs Dashboard：两个灾难，完美错位<a class="headerlink" href="#vs-dashboard" title="Permanent link">&para;</a></h3>
 <p>心跳每 4 小时烧 20K tokens，但<strong>从不更新 <code>agent.status</code></strong>。</p>
 <p>Dashboard 这边呢？每 15 秒自动刷新一次，一天 43,600 次 HTTP 请求。但它读的数据库字段，心跳从来没写过。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>心跳：6 次/天 × 20K tokens = 120K tokens/天 → 不更新 status
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>Dashboard：2,880 次刷新/天 × 42 请求/次 = 43,600 请求/天 → 读到的是心跳从未更新过的数据
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>一个烧钱不产出，一个刷屏看不到真相。
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>两个都在拼命工作，方向完全错开。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>心跳：6 次/天 × 20K tokens = 120K tokens/天 → 不更新 status
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Dashboard：2,880 次刷新/天 × 42 请求/次 = 43,600 请求/天 → 读到的是心跳从未更新过的数据
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>一个烧钱不产出，一个刷屏看不到真相。
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>两个都在拼命工作，方向完全错开。
 </code></pre></div>
 <hr />
 <h2 id="4-ai-coding">4. 与 AI Coding 的关系<a class="headerlink" href="#4-ai-coding" title="Permanent link">&para;</a></h2>
@@ -3203,7 +3235,7 @@
 <li><strong>AI 不会主动优化成本</strong>：心跳、缓存、并发——这些是跨任务的系统属性，AI 在每个任务里只看到局部需求</li>
 </ol>
 <hr />
-<h2 id="_7">关键代码<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h2 id="_8">关键代码<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
