@@ -3228,6 +3228,26 @@ Analysis Baseline: <code>4f843556</code></p>
 <td>512</td>
 <td><code>create_task(...)</code> with no concurrency control</td>
 </tr>
+<tr>
+<td><code>heartbeat.py</code></td>
+<td>282</td>
+<td><code>_build_heartbeat_instruction()</code> → builds heartbeat instruction</td>
+</tr>
+<tr>
+<td><code>heartbeat_runtime.py</code></td>
+<td>81</td>
+<td><code>enqueue_heartbeat_runtime()</code> → enqueues as runtime run</td>
+</tr>
+<tr>
+<td><code>worker_service.py</code></td>
+<td>224</td>
+<td><code>RuntimeModelStepService(prompt_builder=build_agent_context)</code> → defaults to full context builder</td>
+</tr>
+<tr>
+<td><code>model_step_service.py</code></td>
+<td>1208</td>
+<td><code>self._prompt_builder(...)</code> → calls <code>build_agent_context</code>, assembling soul + memory + skills + enterprise_info + focus + triggers</td>
+</tr>
 </tbody>
 </table>
 

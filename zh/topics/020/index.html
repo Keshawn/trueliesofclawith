@@ -3228,6 +3228,26 @@
 <td>512</td>
 <td><code>create_task(...)</code> 无并发控制</td>
 </tr>
+<tr>
+<td><code>heartbeat.py</code></td>
+<td>282</td>
+<td><code>_build_heartbeat_instruction()</code> → 组装心跳指令</td>
+</tr>
+<tr>
+<td><code>heartbeat_runtime.py</code></td>
+<td>81</td>
+<td><code>enqueue_heartbeat_runtime()</code> → 入队为 runtime run</td>
+</tr>
+<tr>
+<td><code>worker_service.py</code></td>
+<td>224</td>
+<td><code>RuntimeModelStepService(prompt_builder=build_agent_context)</code> → 默认用完整上下文构建器</td>
+</tr>
+<tr>
+<td><code>model_step_service.py</code></td>
+<td>1208</td>
+<td><code>self._prompt_builder(...)</code> → 调用 <code>build_agent_context</code>，组装 soul + memory + skills + enterprise_info + focus + triggers</td>
+</tr>
 </tbody>
 </table>
 
