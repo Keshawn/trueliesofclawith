@@ -60,3 +60,4 @@ All findings have been source-verified (evidence level F, analysis baseline `4f8
 | # | Article | In One Sentence |
 |---|---------|-----------------|
 | 017 | [Relationship Migration: An Unfinished Half-Product](topics/017.md) | 9 REST APIs and ~700 lines of frontend code remain fully intact after migration—unused, uncleaned, and the rich relationship model was degraded to a hardcoded `"collaborator"` |
+---
