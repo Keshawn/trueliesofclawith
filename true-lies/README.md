@@ -7,6 +7,7 @@
 ---
 
 
+
 ## About the Authorship of This Document
 
 **This document was written and analyzed primarily with the assistance of large language models (LLMs).**
@@ -28,6 +29,7 @@ The LLM is responsible for:
 - Identifying code patterns
 - Drafting analysis
 - Formatting and organizing text
+
 ## Part I · Research Principles
 
 ### 1. The question is broader than one project
@@ -79,6 +81,7 @@ Code patterns alone do not prove who authored a particular change. We will not p
 Clawith is useful because it is a real, non-trivial agent platform with public attention and broad functionality: identity, permissions, multi-agent communication, tools, code execution, external integrations, and multi-tenant behavior. These interacting boundaries make it suitable for studying system-level consequences.
 
 The broader lesson concerns engineering practice: **locally plausible code does not guarantee a globally coherent or secure system.**
+
 ## Part II · Evaluation Dimensions
 
 An Agent platform does two things: **run Agents**, and **manage Agents**. These dimensions apply beyond Clawith—you can use the same framework to evaluate any Agent platform.
@@ -104,6 +107,7 @@ An Agent platform does two things: **run Agents**, and **manage Agents**. These 
 | Signal |  |
 |--------|---------|
 | Product evolution discipline | Whether the features you see actually work, or are just uncleaned遗迹. |
+
 ## Part III · Complete Index
 
 All findings have been source-verified (evidence level F, analysis baseline `4f843556`).
