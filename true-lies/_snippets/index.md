@@ -1,3 +1,5 @@
+---
+
 ## Part III · Complete Index
 
 All findings have been source-verified (evidence level F, analysis baseline `4f843556`).

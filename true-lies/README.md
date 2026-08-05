@@ -108,6 +108,8 @@ An Agent platform does two things: **run Agents**, and **manage Agents**. These 
 |--------|---------|
 | Product evolution discipline | Whether the features you see actually work, or are just uncleaned遗迹. |
 
+---
+
 ## Part III · Complete Index
 
 All findings have been source-verified (evidence level F, analysis baseline `4f843556`).
